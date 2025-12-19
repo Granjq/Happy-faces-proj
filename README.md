@@ -1,73 +1,73 @@
-# Welcome to your Lovable project
+# HappyShop (FabricLoom Studio)
 
-## Project info
+**Design fabric. Make it real.**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+HappyShop is a premium platform for designing custom textiles with AI and turning them into real, artisan-produced products. We bridge the gap between digital creativity and tangible craftsmanship, empowering users to become textile designers without needing technical skills.
 
-## How can I edit this code?
+![HappyShop Banner](public/favicon.png)
 
-There are several ways of editing your application.
+## 🌟 Vision
 
-**Use Lovable**
+Our mission is to democratize textile design while supporting artisan communities. We believe in:
+- **Creativity**: AI tools that unlock imagination.
+- **Craftsmanship**: Combining high-tech design with high-touch production.
+- **Sustainability**: On-demand production to reduce waste.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🚀 Key Features
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🎨 AI Design Studio
+- **Generative Patterns**: Create unique textile patterns inspired by global cultures and modern aesthetics using advanced AI.
+- **Customization**: Fine-tune colors, scale, and repeat patterns to your exact specifications.
+- **Preview**: Visualize designs on fabrics and products in real-time.
 
-**Use your preferred IDE**
+### 🛍️ Marketplace & Shop
+- **Curated Collections**: Shop finished goods (bags, clothing, accessories) featuring unique, community-generated designs.
+- **"AI Original" Badges**: Highlighting the origin of unique patterns.
+- **Customizable Products**: Take any pattern from the shop and tweak it to make it your own.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🌍 Impact & Production
+- **Local Production**: Printed locally in Kenya, ensuring fast delivery (3-5 days).
+- **Artisan Support**: Every purchase supports local textile producers.
+- **Secure & Transparent**: Clear pricing and secure checkout.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠️ Technology Stack
 
-Follow these steps:
+- **Frontend**: React, TypeScript, Vite
+- **Styling**: Tailwind CSS, Shadcn UI
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📦 Getting Started
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/Granjq/Happy-faces-proj.git
+    cd Happy-faces-proj
+    ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
-**Edit a file directly in GitHub**
+4.  **Build for production**:
+    ```bash
+    npm run build
+    ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🤝 Contributing
 
-**Use GitHub Codespaces**
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and propose new features.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 License
 
-## What technologies are used for this project?
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+*Designed with ❤️ by the HappyShop Team*
