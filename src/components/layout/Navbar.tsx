@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Design Fabric", href: "/design" },
   { name: "Shop", href: "/shop" },
   { name: "Collections", href: "/collections" },
   { name: "My Designs", href: "/design/mine" }, // Added to signal platform depth
@@ -18,13 +17,13 @@ export function Navbar() {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/10 transition-all duration-300">
       <nav className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 bg-primary rounded-tr-lg rounded-bl-lg flex items-center justify-center text-primary-foreground font-bold">T</div>
+          <img src="/logo.png" alt="HappyShop Logo" className="w-8 h-8 object-contain rounded-full" />
           <span className="font-display text-xl font-semibold tracking-tight group-hover:text-primary transition-colors">
-            TEXTILE<span className="text-primary">STUDIO</span>
+            T<span className="text-primary">FASHION</span>
           </span>
         </Link>
 

@@ -23,9 +23,9 @@
     --popover: 40 20% 98%;
     --popover-foreground: 30 10% 12%;
 
-    /* Terracotta accent */
-    --primary: 16 65% 45%;
-    --primary-foreground: 40 20% 98%;
+    /* Green 600 accent */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
 
     /* Warm ivory secondary */
     --secondary: 40 30% 92%;
@@ -44,7 +44,7 @@
 
     --border: 30 15% 85%;
     --input: 30 15% 85%;
-    --ring: 16 65% 45%;
+    --ring: 142 76% 36%;
 
     --radius: 0;
 
@@ -91,8 +91,8 @@
     --popover: 30 15% 10%;
     --popover-foreground: 40 20% 96%;
 
-    --primary: 16 65% 55%;
-    --primary-foreground: 30 10% 12%;
+    --primary: 142 70% 50%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 30 15% 18%;
     --secondary-foreground: 40 20% 96%;
@@ -108,7 +108,7 @@
 
     --border: 30 15% 22%;
     --input: 30 15% 22%;
-    --ring: 16 65% 55%;
+    --ring: 142 70% 50%;
 
     --charcoal: 30 15% 8%;
     --charcoal-foreground: 40 20% 96%;

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { ShopCollections } from "@/components/shop/ShopCollections";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -43,7 +44,7 @@ export default function CollectionsPage() {
   return (
     <Layout>
       {/* Header */}
-      <section className="py-24 bg-background">
+      <section className="pt-24 pb-12 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -54,16 +55,19 @@ export default function CollectionsPage() {
             <p className="label-text text-primary mb-4">Curated</p>
             <h1 className="editorial-heading mb-6">Collections</h1>
             <p className="body-large text-muted-foreground">
-              Explore our curated collections, each celebrating a unique aesthetic tradition 
-              and cultural heritage. From AI-generated originals to artisan-crafted pieces.
+              Explore our curated stories and aesthetic traditions. From bag collections designed for modern life to cultural heritage fabric themes.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Collections Grid */}
-      <section className="pb-24 bg-background">
+      {/* Bag Stories (Moved from Shop) */}
+      <ShopCollections />
+
+      {/* Theme Collections Grid */}
+      <section className="py-24 bg-background border-t border-border">
         <div className="container mx-auto px-6">
+          <h2 className="editorial-heading text-3xl mb-12 text-center">Fabric Themes</h2>
           <div className="space-y-0">
             {collections.map((collection, index) => (
               <motion.article
@@ -74,7 +78,7 @@ export default function CollectionsPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="border-t border-border"
               >
-                <Link 
+                <Link
                   to={`/shop?collection=${collection.id}`}
                   className="grid lg:grid-cols-2 gap-0 group"
                 >
@@ -100,7 +104,7 @@ export default function CollectionsPage() {
                         {collection.description}
                       </p>
                       <Button variant="outline" className="group-hover:bg-foreground group-hover:text-background transition-colors">
-                        Explore Collection
+                        Explore Theme
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
@@ -124,7 +128,7 @@ export default function CollectionsPage() {
               Create your own collection
             </h2>
             <p className="body-large text-primary-foreground/80 mb-10 max-w-xl mx-auto">
-              Design custom patterns and build a personal collection of AI-generated textiles. 
+              Design custom patterns and build a personal collection of AI-generated textiles.
               Save, share, and produce your unique creations.
             </p>
             <Button variant="ivory" size="lg" asChild>
