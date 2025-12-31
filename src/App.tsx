@@ -9,26 +9,36 @@ import ShopPage from "./pages/ShopPage";
 import CollectionsPage from "./pages/CollectionsPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import ImpactPage from "./pages/ImpactPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import OrderTrackingPage from "./pages/OrderTrackingPage";
 import NotFound from "./pages/NotFound";
+import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
-          <Route path="/impact" element={<ImpactPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <CartProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/collections" element={<CollectionsPage />} />
+              <Route path="/how-it-works" element={<HowItWorksPage />} />
+              <Route path="/impact" element={<ImpactPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/order-tracking" element={<OrderTrackingPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </CartProvider>
   </QueryClientProvider>
 );
 

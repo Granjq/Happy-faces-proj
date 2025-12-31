@@ -20,6 +20,7 @@ import { HeroFabricBuilder } from "@/components/home/HeroFabricBuilder";
 import { FeaturedProducts, type Product } from "@/components/home/FeaturedProducts";
 import { CuratedBagStories } from "@/components/home/CuratedBagStories";
 import { CommunityFeed } from "@/components/home/CommunityFeed";
+import { PromotionPopup } from "@/components/home/PromotionPopup";
 import {
   Carousel,
   CarouselContent,
@@ -129,6 +130,7 @@ const products: Product[] = [
 export default function HomePage() {
   return (
     <Layout>
+      <PromotionPopup />
       {/* Hero Section - Creation First */}
       <section className="relative min-h-[auto] lg:min-h-[95vh] flex items-start lg:items-center justify-center pt-[25px] lg:pt-[25px] pb-6 lg:pb-12 overflow-hidden bg-background">
         <div className="container mx-auto px-4 lg:px-6 relative z-10 w-full max-w-7xl mt-0 lg:mt-0">
@@ -137,7 +139,8 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-12 bg-white/50 backdrop-blur-sm border-b border-black/5">
+      {/* How It Works */}
+      <section className="py-8 bg-white/50 backdrop-blur-sm border-b border-black/5">
         <div className="container mx-auto px-6">
           <motion.div
             className="flex flex-col md:flex-row items-center justify-between gap-12"
@@ -221,11 +224,8 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 2: Bag Catalogue (Featured Products) - Now First */}
-      <section className="pt-12 pb-24 bg-background">
-        <div className="container mx-auto px-6">
-          <FeaturedProducts products={products} />
-        </div>
-      </section>
+      {/* SECTION 2: Bag Catalogue (Featured Products) - Now First */}
+      <FeaturedProducts products={products} />
 
       {/* SECTION 1: Curated Bag Stories - Now Second */}
       <CuratedBagStories />

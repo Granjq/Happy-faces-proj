@@ -4,7 +4,13 @@ import { ArrowRight, Sparkles, Wand2, RotateCcw, ShoppingBag, Check, ChevronLeft
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { LivePatternCanvas } from "./LivePatternCanvas";
+import { useCart } from "@/context/CartContext";
+import pattern1 from "@/assets/pattern-1.jpg";
 import pattern2 from "@/assets/pattern-2.jpg";
+import pattern3 from "@/assets/pattern-3.jpg";
+import pattern4 from "@/assets/pattern-4.jpg";
+
+const heroPatterns = [pattern1, pattern2, pattern3, pattern4];
 
 const placeholders = [
     "Kenyan kitenge floral, emerald & gold",
@@ -21,6 +27,7 @@ const fabricTypes = [
 ];
 
 export function HeroFabricBuilder() {
+    const { addToCart } = useCart();
     const [prompt, setPrompt] = useState("");
     const [placeholderIndex, setPlaceholderIndex] = useState(0);
     const [view, setView] = useState<"input" | "customize" | "loading" | "result">("input");
@@ -29,6 +36,17 @@ export function HeroFabricBuilder() {
     const [scale, setScale] = useState([50]);
     const [fabricType, setFabricType] = useState("Cotton");
     const [length, setLength] = useState(1);
+
+    // Slideshow state for right side
+    const [currentPatternIndex, setCurrentPatternIndex] = useState(0);
+
+    // Auto-advance slideshow
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentPatternIndex((prev) => (prev + 1) % heroPatterns.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
 
     // Rotate placeholders
     useEffect(() => {
@@ -58,6 +76,21 @@ export function HeroFabricBuilder() {
         setScale([50]);
         setFabricType("Cotton");
         setLength(1);
+    };
+
+    // Total Price Calculation
+    const totalPrice = 1200 * length;
+
+    const handleAddToCart = () => {
+        addToCart({
+            id: `${Date.now()}`,
+            name: "Custom Fabric Design",
+            price: 1200,
+            image: pattern2, // Using default pattern for now
+            fabricType: fabricType,
+            length: length,
+            patternScale: scale[0]
+        });
     };
 
     return (
@@ -332,7 +365,11 @@ export function HeroFabricBuilder() {
                             </div>
 
                             <div className="space-y-3">
-                                <Button size="lg" className="w-full h-12 rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg">
+                                <Button
+                                    onClick={handleAddToCart}
+                                    size="lg"
+                                    className="w-full h-12 rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg"
+                                >
                                     <ShoppingBag className="w-4 h-4 mr-2" /> Add to Cart
                                 </Button>
                                 <div className="grid grid-cols-2 gap-3">
@@ -387,6 +424,125 @@ export function HeroFabricBuilder() {
                                     <LivePatternCanvas />
                                 </div>
                             </motion.div>
+                        ) : view === 'input' ? (
+                            /* LIGHT, AIRY, PREMIUM STUDIO VISUALIZATION */
+                            <motion.div
+                                key="studio-hero-visual"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="w-full h-full bg-[#FAFCFA] relative overflow-hidden flex flex-col justify-center items-center"
+                            >
+                                {/* 1. Base Depth Layer (Subtle Green Radial) */}
+                                <div
+                                    className="absolute inset-0 opacity-100"
+                                    style={{
+                                        background: 'radial-gradient(circle at 70% 40%, rgba(34, 197, 94, 0.08), transparent 60%)'
+                                    }}
+                                />
+
+                                {/* 4. Ghost Text (Transformation Story) */}
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+                                    <motion.p
+                                        key={placeholderIndex} // Animate when prompt changes
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 0.06, scale: 1 }} // 6% Opacity
+                                        exit={{ opacity: 0, scale: 1.1 }}
+                                        transition={{ duration: 1.5 }}
+                                        className="font-display text-8xl lg:text-9xl text-charcoal font-bold whitespace-nowrap opacity-[0.04] select-none transform -rotate-12 translate-x-10 translate-y-10"
+                                    >
+                                        {placeholders[placeholderIndex].split(" ")[0]} Fabric
+                                    </motion.p>
+                                </div>
+
+                                {/* Floating Cards Container */}
+                                <div className="relative z-10 w-full h-full p-8 flex flex-col justify-center items-center">
+
+                                    {/* Glassmorphic Background Square (Outer Box) */}
+                                    <motion.div
+                                        className="absolute z-10 bg-white/40 backdrop-blur-xl border border-white/50 rounded-[32px]"
+                                        style={{
+                                            width: '24rem', // w-96
+                                            height: '24rem',
+                                            boxShadow: '0 20px 40px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255,255,255,0.5)'
+                                        }}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 1, delay: 0.1 }}
+                                    />
+
+                                    {/* Secondary Card (Background, blurred - pushed further back) */}
+                                    <motion.div
+                                        className="absolute w-48 aspect-square rounded-2xl overflow-hidden z-0 opacity-40 grayscale-[20%]"
+                                        style={{
+                                            boxShadow: '0 16px 32px rgba(0,0,0,0.08)',
+                                            filter: 'blur(3px)',
+                                            transform: 'translate(70%, -30%) rotate(15deg)'
+                                        }}
+                                        initial={{ x: 50, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 0.4 }}
+                                        transition={{ delay: 0.5, duration: 0.8 }}
+                                    >
+                                        <AnimatePresence mode="popLayout">
+                                            <motion.img
+                                                key={(currentPatternIndex + 1) % heroPatterns.length}
+                                                src={heroPatterns[(currentPatternIndex + 1) % heroPatterns.length]}
+                                                className="absolute inset-0 w-full h-full object-cover"
+                                                alt="Secondary Fabric"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 1 }}
+                                            />
+                                        </AnimatePresence>
+                                    </motion.div>
+
+                                    {/* Hero Card (Main Character - Enlarged) */}
+                                    <motion.div
+                                        className="relative w-80 aspect-square rounded-[24px] overflow-hidden z-20 bg-white shadow-2xl"
+                                        style={{
+                                            boxShadow: '0 40px 80px rgba(0,0,0,0.15)', // Enhanced shadow
+                                        }}
+                                        initial={{ y: 20, opacity: 0, scale: 0.95 }}
+                                        animate={{
+                                            y: 0,
+                                            opacity: 1,
+                                            scale: 1,
+                                            // Gentle float animation
+                                            translateY: [-5, -12, -5]
+                                        }}
+                                        transition={{
+                                            delay: 0.2,
+                                            duration: 0.8,
+                                            translateY: {
+                                                duration: 6,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }
+                                        }}
+                                    >
+                                        {/* Green Highlight Outline/Glow */}
+                                        <div className="absolute inset-0 rounded-[24px] pointer-events-none z-30" style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.4)' }} />
+
+                                        <AnimatePresence mode="popLayout">
+                                            <motion.img
+                                                key={currentPatternIndex}
+                                                src={heroPatterns[currentPatternIndex]}
+                                                className="absolute inset-0 w-full h-full object-cover"
+                                                alt="Hero Fabric Pattern"
+                                                initial={{ opacity: 0, scale: 1.1 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 1.2 }}
+                                            />
+                                        </AnimatePresence>
+
+                                        {/* Inner Gloss/Highlight */}
+                                        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none z-20" />
+                                    </motion.div>
+
+                                </div>
+                            </motion.div>
                         ) : (
                             <motion.div
                                 key="live-canvas"
@@ -396,7 +552,7 @@ export function HeroFabricBuilder() {
                                 className="w-full h-full"
                             >
                                 <LivePatternCanvas />
-                                <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none transition-opacity duration-500 ${view === 'input' ? 'opacity-100' : 'opacity-0'}`} />
+                                <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none transition-opacity duration-500 opacity-0`} />
                             </motion.div>
                         )}
                     </AnimatePresence>

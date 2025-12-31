@@ -130,7 +130,7 @@ export function FeaturedProducts({ products, title = "Choose Your Canvas", subti
     );
 
     return (
-        <section className="py-24 bg-background border-t border-black/5">
+        <section id="bag-catalogue" className="py-12 bg-background border-t border-black/5">
             <div className="container mx-auto px-4 md:px-6">
 
                 {/* Header */}
