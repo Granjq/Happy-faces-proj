@@ -11,6 +11,7 @@ import HowItWorksPage from "./pages/HowItWorksPage";
 import ImpactPage from "./pages/ImpactPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderTrackingPage from "./pages/OrderTrackingPage";
+import LegalPage from "./pages/LegalPage";
 import NotFound from "./pages/NotFound";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/impact" element={<ImpactPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order-tracking" element={<OrderTrackingPage />} />
+              <Route path="/legal" element={<LegalPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

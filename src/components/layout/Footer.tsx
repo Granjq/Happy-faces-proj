@@ -18,8 +18,8 @@ const footerLinks = {
   support: [
     { name: "Contact", href: "/contact" },
     { name: "FAQ", href: "/faq" },
-    { name: "Shipping", href: "/shipping" },
-    { name: "Returns", href: "/returns" },
+    { name: "Shipping", href: "/legal#shipping" },
+    { name: "Returns", href: "/legal#returns" },
   ],
 };
 
@@ -138,10 +138,10 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-muted-foreground text-sm font-body">
             <p>© 2024 TFashion. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-primary transition-colors">
+              <Link to="/legal#privacy" className="hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="hover:text-primary transition-colors">
+              <Link to="/legal#terms" className="hover:text-primary transition-colors">
                 Terms of Service
               </Link>
             </div>
