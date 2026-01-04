@@ -18,6 +18,8 @@ import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
 
+import { CookieConsent } from "@/components/ui/CookieConsent";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <CartProvider>
@@ -37,6 +39,7 @@ const App = () => (
               <Route path="/legal" element={<LegalPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <CookieConsent />
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
